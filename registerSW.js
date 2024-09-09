@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/tarjeta-react/sw.js', { scope: '/tarjeta-react/' })})}
