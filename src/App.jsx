@@ -199,7 +199,7 @@ export default function App() {
       </Box>
 
       {/* Redes sociales */}
-      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "20px" }}>Redes Sociales</Typography>
+      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "10px" }}>Redes Sociales</Typography>
       <Box
         sx={{
           marginTop: "5px",
