@@ -119,7 +119,7 @@ export default function BasicSpeedDial() {
     <Box sx={{ height: 1, transform: "translateZ(10px)", flexGrow: 1 }}>
       <SpeedDial
         ariaLabel="SpeedDial actions"
-        sx={{ position: "absolute", bottom: 10, right: -10 }}
+        sx={{ position: "absolute", bottom: -15, right: 10 }}
         icon={<SpeedDialIcon />}
       >
         {actions.map((action) => (
