@@ -5,7 +5,7 @@ import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
 import SaveIcon from "@mui/icons-material/Save";
-import PrintIcon from "@mui/icons-material/Print";
+import QrCode2Icon from '@mui/icons-material/QrCode2';
 import ShareIcon from "@mui/icons-material/Share";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
@@ -27,23 +27,26 @@ const style = {
 
 // Acciones del SpeedDial
 const actions = [
-  { icon: <SaveIcon />, name: "Save" },
-
-  { icon: <ShareIcon />, name: "Share" },
+  { icon: <FileCopyIcon />, name: "Whatsapp" },
+  { icon: <SaveIcon />, name: "Guardar contacto" },
+  { icon: <ShareIcon />, name: "Compartir" },
+  { icon: <QrCode2Icon />, name: "Codigo Qr" },
 ];
 
 export default function BasicSpeedDial() {
   // Estado para controlar la visibilidad del modal
   const [open, setOpen] = useState(false);
 
-  // estado para el codigo QR
+  // Estados para el codigo QR y el archivo de contacto
   const [codigoQr, setCodigoQr] = useState(null);
+  const [contacto, setContacto] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const data = await fetchDataFromAPI();
-      if (data && data.codigo_qr) {
-        setCodigoQr(data.codigo_qr);
+      if (data) {
+        if (data.codigo_qr) setCodigoQr(data.codigo_qr);
+        if (data.contacto) setContacto(data.contacto);
       }
     };
 
@@ -54,19 +57,35 @@ export default function BasicSpeedDial() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Función para descargar el archivo de contacto
+  const handleDownload = () => {
+    if (contacto) {
+      const link = document.createElement("a");
+      link.href = contacto; // URL del archivo que deseas descargar
+      link.download = "contacto.vcf"; // Nombre predeterminado del archivo
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link); // Elimina el enlace después de hacer clic
+    } else {
+      alert("No hay archivo de contacto disponible.");
+    }
+  };
+
   return (
     <Box sx={{ height: 1, transform: "translateZ(10px)", flexGrow: 1 }}>
+      {/* <Backdrop open={open} /> */}
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: "absolute", bottom: 10, right: -10 }}
         icon={<SpeedDialIcon />}
+        
       >
         {actions.map((action) => (
           <SpeedDialAction
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
-            onClick={action.name === "Share" ? handleOpen : null}
+            onClick={action.name === "Codigo Qr" ? handleOpen : action.name === "Guardar contacto" ? handleDownload : null}
           />
         ))}
       </SpeedDial>
@@ -78,12 +97,22 @@ export default function BasicSpeedDial() {
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
       >
-        <Box sx={{ ...style, width: "95" ,display: "flex", flexDirection: "column", alignItems: "center", borderRadius: "10px", border: "none"}}>
+        <Box
+          sx={{
+            ...style,
+            width: "95",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            borderRadius: "10px",
+            border: "none",
+          }}
+        >
           <Typography id="modal-title" variant="h6" component="h2">
             Comparte esta tarjeta
           </Typography>
           <Typography id="modal-description" sx={{ mt: 2, fontSize: 12 }}>
-            escanea el codigo QR para compartir esta tarjeta
+            Escanea el código QR para compartir esta tarjeta.
           </Typography>
           <Box sx={{ mt: 2, width: "100%", textAlign: "center" }}>
             {codigoQr ? (

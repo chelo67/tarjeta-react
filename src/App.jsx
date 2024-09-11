@@ -43,7 +43,7 @@ export default function App() {
 
   return (
     <Container maxWidth="xs" sx={{ maxHeight: "100vh", marginBottom:"0" }}>
-      {/* CABECERA */}
+      {/* CABECERA **********************/}
       <Box
         sx={{
           backgroundImage: `url(${data.imagen_top})`,
@@ -58,7 +58,7 @@ export default function App() {
       >
       </Box>
 
-      {/* nombre y puesto */}
+      {/* nombre y puesto *********************************/}
       <Box
         sx={{
           display: "flex",
@@ -75,23 +75,30 @@ export default function App() {
             sx={{ width: 100, height: 100, border: "6px solid white" }}
           />
         </Box>
-        <Box sx={{ textAlign: "center", marginTop: "20px" }}>
+        <Box sx={{  marginTop: "20px", display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Typography variant="h5" component="h1">
             {data.nombre}
           </Typography>
-          <Typography variant="subtitle1">{data.puesto}</Typography>
+          <Typography variant="subtitle1" sx={{ marginTop: "-8px" }}>
+            {data.puesto}
+          </Typography>
+          <Box sx={{ display: "flex", alignItems: "center", marginTop: "10px", gap: "10px" }}>
+            <img src={data.logo_empresa} alt="" width="60px" />
+            <Typography>{data.nombre_empresa}</Typography>
+          </Box>
         </Box>
+        
       </Box>
+      
 
-      {/* BOTONES CONTACTO */}
+      {/* BOTONES CONTACTO ****************************/}
       <Grid2
         container
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginTop: "10px",
-          marginLeft: "10px",
+          marginTop: "15px",
         }}
       >
         <Grid2 item xs={3}>
@@ -136,7 +143,7 @@ export default function App() {
         </Grid2>
       </Grid2>
 
-      {/* INFO CONTACTO */}
+      {/* INFO CONTACTO *****************/}
       <Box
         sx={{
           marginTop: "5px",
