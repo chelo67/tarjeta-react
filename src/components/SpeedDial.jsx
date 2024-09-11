@@ -152,7 +152,7 @@ export default function BasicSpeedDial() {
         description="Puedes compartir este enlace por correo, redes sociales, etc."
       >
         <Box sx={{ mt: 2, width: "100%", display: "flex", justifyContent: "space-around" }}>
-          <a href={`https://wa.me/${wsp}?text=Te%20comparto%20esta%20tarjeta%20https://chelo67.github.io/demo1-tarjeta/`} target="_blank" rel="noopener noreferrer">
+          <a href={`https://api.whatsapp.com/send?text=Te%20comparto%20esta%20tarjeta%20https://chelo67.github.io/tarjeta-react/`} target="_blank" rel="noopener noreferrer">
             <WhatsAppIcon sx={{ fontSize: 40, color: "#25D366" }} />
           </a>
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://chelo67.github.io/demo1-tarjeta" target="_blank">
