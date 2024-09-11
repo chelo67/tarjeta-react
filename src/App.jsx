@@ -42,7 +42,7 @@ export default function App() {
   }
 
   return (
-    <Container maxWidth="xs" sx={{ maxHeight: "100vh" }}>
+    <Container maxWidth="xs" sx={{ maxHeight: "100vh", marginBottom:"0" }}>
       {/* CABECERA */}
       <Box
         sx={{
@@ -55,7 +55,8 @@ export default function App() {
           borderRadius: "15px 15px 0 0",
           marginTop: "10px",
         }}
-      ></Box>
+      >
+      </Box>
 
       {/* nombre y puesto */}
       <Box
