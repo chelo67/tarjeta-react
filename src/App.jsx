@@ -99,7 +99,9 @@ export default function App() {
               }}
             >
               <img src={data.logo_empresa} alt="" width="60px" />
-              {data.nombre_empresa && <Typography>{data.nombre_empresa}</Typography>}
+              {data.nombre_empresa && (
+                <Typography>{data.nombre_empresa}</Typography>
+              )}
             </Box>
           )}
         </Box>
@@ -116,38 +118,60 @@ export default function App() {
           gap: "20px",
         }}
       >
-        
-          <>
-            {data.telefono && (
+        <>
+          {data.telefono && (
+            <a href={`tel:${data.telefono}`} target="_blank">
+              <Grid2 item xs={3}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  sx={{ bgcolor: data.color_boton_contacto }}
+                >
+                  <LocalPhoneIcon />
+                </Button>
+              </Grid2>
+            </a>
+          )}
+          {data.enlace_email && (
+            <a href={`mailto:${data.enlace_email}`} target="_blank">
             <Grid2 item xs={3}>
-              <Button variant="contained" sx={{ bgcolor: data.color_boton_contacto }}>
-                <LocalPhoneIcon />
-              </Button>
-            </Grid2>
-            )}
-            {data.enlace_email && (
-            <Grid2 item xs={3}>
-              <Button variant="contained" sx={{ bgcolor: data.color_boton_contacto }}>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ bgcolor: data.color_boton_contacto }}
+              >
                 <EmailIcon />
               </Button>
             </Grid2>
-            )}
-            {data.enlace_web && (
+            </a>
+          )}
+          {data.enlace_web && (
+            <a href={data.enlace_web} target="_blank">
             <Grid2 item xs={3}>
-              <Button variant="contained" sx={{ bgcolor: data.color_boton_contacto }}>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ bgcolor: data.color_boton_contacto }}
+              >
                 <LanguageIcon />
               </Button>
             </Grid2>
-            )}
-            {data.direccion && (
+            </a>
+          )}
+          {data.direccion && (
+            <a href={`https://maps.google.com/?q=${data.direccion}`} target="_blank">
             <Grid2 item xs={3}>
-              <Button variant="contained" sx={{ bgcolor: data.color_boton_contacto }}>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ bgcolor: data.color_boton_contacto }}
+              >
                 <PlaceIcon />
               </Button>
             </Grid2>
-            )}
-          </>
-        
+            </a>
+          )}
+        </>
       </Grid2>
 
       {/* Info contacto */}
@@ -162,7 +186,13 @@ export default function App() {
         }}
       >
         {data.telefono && (
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <LocalPhoneIcon color="primary" fontSize="small" />
             <Typography variant="body2" padding={1}>
               {data.telefono}
@@ -171,7 +201,13 @@ export default function App() {
         )}
 
         {data.enlace_email && (
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <EmailIcon color="primary" fontSize="small" />
             <Typography variant="body2" padding={1}>
               {data.enlace_email}
@@ -180,7 +216,13 @@ export default function App() {
         )}
 
         {data.enlace_web && (
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <LanguageIcon color="primary" fontSize="small" />
             <Typography variant="body2" padding={1}>
               {data.enlace_web}
@@ -189,7 +231,13 @@ export default function App() {
         )}
 
         {data.direccion && (
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <PlaceIcon color="primary" fontSize="small" />
             <Typography variant="body2" padding={1}>
               {data.direccion}
@@ -199,7 +247,9 @@ export default function App() {
       </Box>
 
       {/* Redes sociales */}
-      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "10px" }}>Redes Sociales</Typography>
+      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "10px" }}>
+        Redes Sociales
+      </Typography>
       <Box
         sx={{
           marginTop: "5px",
@@ -210,17 +260,32 @@ export default function App() {
         }}
       >
         {data.facebook && (
-          <a href={data.facebook} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <a
+            href={data.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
             <Chip icon={<FacebookIcon />} label="Facebook" clickable />
           </a>
         )}
         {data.linkedin && (
-          <a href={data.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <a
+            href={data.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
             <Chip icon={<LinkedInIcon />} label="LinkedIn" clickable />
           </a>
         )}
         {data.instagram && (
-          <a href={data.instagram} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <a
+            href={data.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
             <Chip icon={<InstagramIcon />} label="Instagram" clickable />
           </a>
         )}
@@ -236,12 +301,22 @@ export default function App() {
         }}
       >
         {data.pinterest && (
-          <a href={data.pinterest} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <a
+            href={data.pinterest}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
             <Chip icon={<PinterestIcon />} label="Pinterest" clickable />
           </a>
         )}
         {data.x_twitter && (
-          <a href={data.x_twitter} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+          <a
+            href={data.x_twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}
+          >
             <Chip icon={<LinkedInIcon />} label="X Twitter" clickable />
           </a>
         )}
