@@ -2,7 +2,7 @@
 export const fetchDataFromAPI = async () => {
     try {
       const response = await fetch(
-        "https://charismatic-goat-c6c4ff.instawp.xyz/wp-json/wp/v2/tarjeta?author=2&acf_format=standard"
+        "https://worthy-mongoose-7d9f1b.instawp.xyz//wp-json/wp/v2/tarjeta?author=2&acf_format=standard"
       );
       const result = await response.json();
       if (result.length > 0) {
